@@ -27,6 +27,10 @@ public class BookDAO {
                 stream().findAny().orElse(null);
     }
 
+    public List<Book> showByPerson(Integer person_id) {
+        return jdbcTemplate.query("SELECT * FROM Book WHERE person_id=?", new Object[]{person_id}, new BeanPropertyRowMapper<>(Book.class));
+    }
+
     public void save(Book book) {
         jdbcTemplate.update("INSERT INTO Book(person_id, name, author, publication_date) VALUES(?, ?, ?, ?)",
                 book.getPersonId(),
