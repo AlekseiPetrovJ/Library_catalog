@@ -73,6 +73,7 @@ public class BooksController {
 
     @PatchMapping("/{id}/setowner")
     public String updateSetOwner(@ModelAttribute("book") @Valid Book book,
+                                 BindingResult bindingResult,
                                  @ModelAttribute("person") Person person,
                                  @PathVariable("id") int id) {
         bookDAO.updateOwner(id, person.getId());
@@ -81,6 +82,7 @@ public class BooksController {
 
     @PatchMapping("/{id}/clearowner")
     public String updateClearOwner(@ModelAttribute("book") @Valid Book book,
+                                   BindingResult bindingResult,
                                    @PathVariable("id") int id) {
         bookDAO.updateOwner(id, null);
         return "redirect:/books";
