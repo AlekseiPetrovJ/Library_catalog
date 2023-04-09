@@ -22,16 +22,13 @@ import java.util.Objects;
 @Configuration
 @ComponentScan("ru.petrov.librarycatalog")
 @EnableWebMvc
-//аннотация с указание файла с настройками
 @PropertySource("classpath:database.properties")
 public class SpringConfig implements WebMvcConfigurer {
 
     private final ApplicationContext applicationContext;
-    //поле в котором будут лежать значения из файл
     private final Environment environment;
 
     @Autowired
-    //внедряем в т.ч Environment
     public SpringConfig(ApplicationContext applicationContext, Environment environment) {
         this.applicationContext = applicationContext;
         this.environment = environment;
